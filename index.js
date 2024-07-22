@@ -1,7 +1,15 @@
 async function get_apod() {
     let apod_url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
-    let response = await fetch(apod_url);
-    document.getElementById("explain").innerHTML = await response;
+    // The fetch() function returns a Promise which is fulfilled with a Response object representing the server's response.
+    let apod_response = await fetch(apod_url);
+    // Response.json() Returns a promise that is the result of taking JSON as input and parsing it to produce a JavaScript object.
+    let apod_response_json = await apod_response.json();
+    document.getElementById("title").innerHTML = apod_response_json.title;
+    document.getElementById("date").innerHTML = apod_response_json.date;
+    document.getElementById("picture").src = apod_response_json.url;
+    document.getElementById("copyright").innerHTML = apod_response_json.copyright;
+    document.getElementById("explanation").innerHTML = apod_response_json.explanation;
+    console.log(apod_response_json);
 }
 
 // main
