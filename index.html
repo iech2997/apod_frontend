@@ -3,18 +3,40 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
-    <title>Home</title>
+    <title>APOD</title>
 </head>
 
 <body>
-    <h1 id="heading">ASTRONOMY PICTURE OF THE DAY</h1>
-    <h2 id="title"></h2>
-    <h2 id="date"></h2>
-    <img id="picture" src="">
-    <p id="copyright"></p>
-    <p id="explanation"></p>
+    <header>
+        <a id="header-home" href="index.html">Astronomy Picture Of The Day</a>
+    </header>
+
+    <main>
+        <div class="major">
+            <div class="major-pic">
+                <img id="major-picture" src="">
+            </div>
+
+            <div class="major-info">
+                <p id="major-date">Today</p>
+                <p id="major-title"></p>
+                <p id="major-copyright"></p>
+                <p id="major-explanation"></p>
+            </div>
+        </div>
+
+        <div class="minor">
+            <p>More pictures coming...</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>For more information, please visit <a href="https://www.nasa.gov" target="_blank">NASA</a>.</p>
+    </footer>
 </body>
+
+<script src="index.js"></script>
 
 </html>

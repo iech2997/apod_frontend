@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;  /* makes sure that the padding and border are included in the total width and height of the elements. */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* vh means viewport height */
+}
+
+header {
+    width: 100%;
+    padding: 1%;
+    background-color: #062c43;
+    color: #ced7e0;
+    
+}
+
+header a {
+    text-decoration: none;
+}
+
+#header-home {
+    color: #ced7e0;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.major {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 2% 10%;
+    background-color: white;
+}
+
+.major-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1%;
+    width: 50%;
+}
+
+#major-date {
+    color: #9ccddc;
+    letter-spacing: 0.5rem;
+}
+
+#major-title {
+    font-size: 2rem;
+    padding: 2% 0% 2%;
+    font-weight: bold;
+}
+
+#major-copyright {
+    color: #9ccddc;
+    font-weight: bold;
+    padding: 0% 0% 5%;
+}
+
+.major-pic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+    width: 50%;
+}
+
+#major-picture {
+    width: 100%;
+}
+
+.minor {
+    background-color: #9ccddc;
+    color: #062c43;
+}
+
+footer {
+    margin-top: auto;  /* margin fill the remaining space between it and its previous object, so that footer is pushed to botom */
+    width: 100%;
+    padding: 1%;
+    background-color: #062c43;
+    color: #ced7e0;
+}
+
+footer a {
+    text-decoration: none;
+    color: #ced7e0;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
