@@ -28,7 +28,6 @@ header a {
     color: #ced7e0;
     letter-spacing: 0.5rem;
     text-transform: uppercase;
-    font-size: 2rem;
 }
 
 .major {
@@ -54,7 +53,7 @@ header a {
 }
 
 #major-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 2% 0% 2%;
     font-weight: bold;
 }
@@ -76,6 +75,12 @@ header a {
 
 #major-picture {
     width: 100%;
+}
+
+#major-video {
+    width: 100%;
+    border-width: 0px;
+    aspect-ratio : 1 / 1;
 }
 
 .minor {
