@@ -1,6 +1,5 @@
 async function get_major_apod() {
-    //let major_apod_url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
-    let major_apod_url = "https://api.nasa.gov/planetary/apod?api_key=L2tecoNEQagoNEzVxASkC2tpVN8ZjgnxGeu0BWqB";
+    let major_apod_url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
 
     // The fetch() function returns a Promise which is fulfilled with a Response object representing the server's response.
     let major_apod_response = await fetch(major_apod_url);
@@ -42,7 +41,7 @@ async function get_minor_apod() {
     let start_date = current_datetime.getDate();
     start = start_year + "-" + start_month + "-" + start_date;
     
-    let minor_apod_url = "https://api.nasa.gov/planetary/apod?api_key=L2tecoNEQagoNEzVxASkC2tpVN8ZjgnxGeu0BWqB&start_date=" + start + "&end_date=" + end;
+    let minor_apod_url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=" + start + "&end_date=" + end;
     let minor_apod_response = await fetch(minor_apod_url);
     let minor_apod_response_json = await minor_apod_response.json();
     
