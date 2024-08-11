@@ -7,15 +7,18 @@
 body {
     font-family: sans-serif;
     min-height: 100vh;  /* vh means viewport height */
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 header {
     width: 100%;
+    height: auto;
     padding: 2%;
     background-color: #062c43;
     color: #ced7e0;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 header a {
@@ -41,22 +44,25 @@ header a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    row-gap: 2%;
+    padding: 2% 0% 2% 0%;
 }
 
 #major-date {
     color: #9ccddc;
     letter-spacing: 0.5rem;
+    padding-bottom: 2%;
 }
 
 #major-title {
     font-size: 1.5rem;
     font-weight: bold;
+    padding-bottom: 2%;
 }
 
 #major-copyright {
     color: #9ccddc;
     font-weight: bold;
+    padding-bottom: 2%;
 }
 
 .major-pic {
@@ -84,6 +90,7 @@ header a {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 2%;
+    row-gap: 2%;
 }
 
 .minor-info {
@@ -142,13 +149,12 @@ header a {
 
 .minor-title {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 footer {
-    margin-top: auto;  /* margin fill the remaining space between it and its previous object, so that footer is pushed to botom */
     width: 100%;
-    padding: 1%;
+    padding: 2%;
     background-color: #062c43;
     color: #ced7e0;
 }
@@ -160,4 +166,13 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .major {
+        grid-template-columns: 1fr;
+    }
+    .minor {
+        grid-template-columns: 1fr 1fr;
+    }
 }
