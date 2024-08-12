@@ -12,6 +12,8 @@ async function get_major_apod() {
     if (major_apod_response_json.hasOwnProperty("media_type") && major_apod_response_json.hasOwnProperty("url")){
         if (major_apod_response_json.media_type == "video") {
             document.getElementById("major-video").src = major_apod_response_json.url;
+            const pictureelement = document.getElementById("major-picture");
+            pictureelement.remove();
         }
         else if (major_apod_response_json.media_type == "image") {
             document.getElementById("major-picture").src = major_apod_response_json.url;
@@ -55,6 +57,8 @@ async function get_minor_apod() {
         if (minor_apod_response_json[4-i].hasOwnProperty("media_type") && minor_apod_response_json[4-i].hasOwnProperty("url")){
             if (minor_apod_response_json[4-i].media_type == "video") {
                 document.getElementById("minor" + i + "-video").src = minor_apod_response_json[4-i].url;
+                const pictureelement = document.getElementById("minor" + i + "-picture");
+                pictureelement.remove();
             }
             else if (minor_apod_response_json[4-i].media_type == "image") {
                 document.getElementById("minor" + i + "-picture").src = minor_apod_response_json[4-i].url;
