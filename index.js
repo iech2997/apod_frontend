@@ -2,7 +2,12 @@ async function get_major_apod() {
     let major_apod_url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
 
     // The fetch() function returns a Promise which is fulfilled with a Response object representing the server's response.
+    // The fetch() method returns a Promise, which is a placeholder object that will either be "fulfilled" if your request is successful, 
+    // or "rejected" if your request is unsuccessful.
+    // If the Promise is fulfilled, it resolves to a Response object, and you can use the .then() method to access the Response. 
+    // ** using async/await instead of .then() is preferred here 
     let major_apod_response = await fetch(major_apod_url);
+    // The data you get from a GET request is not usable at first. To make the data usable, you can use the .json() method on the Response object
     // Response.json() Returns a promise that is the result of taking JSON as input and parsing it to produce a JavaScript object.
     let major_apod_response_json = await major_apod_response.json();
     document.getElementById("major-date").innerHTML = "Today";
