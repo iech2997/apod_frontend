@@ -3,7 +3,6 @@ const loadMoreBtn = document.getElementById("load-more-btn");
 let startingIndex = 0;
 let endingIndex = 7;
 let apodDataArr = [];
-let currentDatetime = new Date();
 const apodBaseUrl = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
 
 async function GetApod() {
@@ -12,7 +11,7 @@ async function GetApod() {
     // If the Promise is fulfilled, it resolves to a Response object.
     // You can then handle the response by using methods like .json(), .text(), or .blob() on the response object to read the data
     // ** using async/await instead of .then() is preferred here 
-    let apodUrl = `${apodBaseUrl}&start_date=${GetDateString(15)}`;
+    let apodUrl = `${apodBaseUrl}&start_date=${GetDateString(13)}`;
     let apodRes = await fetch(apodUrl);
 
     // The data you get from a GET request is not usable at first. To make the data usable, you can use the .json() method on the Response object
@@ -39,15 +38,16 @@ function DisplayApod(apodCollection) {
             <div id="${index}" class="apod-card">
                 <img class=""apod-img" src="${url}" alt="${title} image">
                 <h2 class="apod-title">${title}</h2>
-                <p class="copyright">${copyright}</p>
-                <p class="date">${date}</p>
-                <p class="explanation">${explanation}</p>
+                <p class="apod-copyright">${copyright}</p>
+                <p class="apod-date">${date}</p>
+                <p class="apod-explanation">${explanation}</p>
             </div>
         `;
     });
 }
 
 function GetDateString(daysAgo) {
+    let currentDatetime = new Date();
     currentDatetime.setDate(currentDatetime.getDate() - daysAgo);
     let year = currentDatetime.getFullYear();
     let month = currentDatetime.getMonth() + 1;

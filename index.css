@@ -4,9 +4,49 @@
     padding: 0;
 }
 
+/* global scope */
+:root {
+    --darkBlue: #0F1931;
+    --blue: #2D4159;
+    --darkBrown: #594435;
+    --brown: #C89768;
+    --beige: #E2D4BB;
+}
+
 body {
     font-family: sans-serif;
     min-height: 100vh;  /* vh means viewport height */
 }
 
+header {
+    background-color: var(--darkBrown);
+    color: var(--beige);
+    padding: 5vh 2vw;
+    text-align: center;
+}
 
+main {
+    background-color: var(--darkBlue);
+    color: var(--beige);
+}
+
+#apod-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.apod-card {
+    background-color: var(--blue);
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer {
+    background-color: var(--darkBrown);
+    color: var(--beige);
+    padding: 5vh 2vw;
+    text-align: center;
+}
