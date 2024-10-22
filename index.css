@@ -11,6 +11,7 @@
     --darkBrown: #594435;
     --brown: #C89768;
     --beige: #E2D4BB;
+    --white: #ffffff;
 }
 
 body {
@@ -20,14 +21,14 @@ body {
 
 header {
     background-color: var(--darkBrown);
-    color: var(--beige);
+    color: var(--white);
     padding: 5vh 2vw;
     text-align: center;
 }
 
 main {
     background-color: var(--darkBlue);
-    color: var(--beige);
+    color: var(--white);
 }
 
 #apod-container {
@@ -46,7 +47,7 @@ main {
 
 footer {
     background-color: var(--darkBrown);
-    color: var(--beige);
+    color: var(--white);
     padding: 5vh 2vw;
     text-align: center;
 }
