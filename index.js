@@ -4,7 +4,8 @@ let startingIndex = 0;
 let endingIndex = 7;
 let currentIndex = 0;
 let apodDataArr = [];
-const apodBaseUrl = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
+//const apodBaseUrl = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
+const apodBaseUrl = "https://api.nasa.gov/planetary/apod?api_key=L2tecoNEQagoNEzVxASkC2tpVN8ZjgnxGeu0BWqB";
 
 async function GetApod() {
     // The fetch() method returns a Promise, which is a placeholder object that will either be "fulfilled" if your request is successful, 
@@ -35,24 +36,22 @@ function FetchMoreApod() {
 function DisplayApod(apodCollection) {
     // Destructuring parameters is a convenient way to extract values from objects and arrays directly within function parameters
     apodCollection.forEach(({copyright, date, explanation, title, url, media_type}) => {
-        apodContainer.innerHTML += `
-            <div id="apod-card-${currentIndex}" class="apod-card"></div>
-        `;
+        apodContainer.innerHTML += `<div id="apod-card-${currentIndex}" class="apod-card"></div>`;
+        
         let apodCard = document.getElementById("apod-card-" + currentIndex);
         
         let mediaHtml = "";
         if (media_type == "image") {
-            mediaHtml = `<img class="apod-img" src="${url}">`;
+            mediaHtml = `<img class="apod-media" src="${url}">`;
         }
         else {
-            mediaHtml = `<iframe class="apod-img" src="${url}"></iframe>`;
+            mediaHtml = `<iframe class="apod-media" src="${url}"></iframe>`;
         }
 
         let copyrightHtml = copyright ? `<p class="apod-copyright">${copyright}</p>` : "";
         let dateHtml = date ? `<p class="apod-date">${date}</p>` : "";
         let explanationHtml = explanation ? `<p class="apod-explanation">${explanation}</p>` : "";
-        let titleHtml = title ? `<h2 class="apod-title">${title}</h2>` : "";
-
+        let titleHtml = title ? `<p class="apod-title">${title}</p>` : "";
 
         apodCard.innerHTML += mediaHtml + titleHtml + copyrightHtml + dateHtml + explanationHtml;
         currentIndex++;
