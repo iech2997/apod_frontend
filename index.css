@@ -26,6 +26,7 @@ header {
     font-weight: bold;
     font-size: 1.5rem;
     text-transform: uppercase;
+    text-align: center;
 }
 
 main {
@@ -87,4 +88,10 @@ footer {
     color: var(--beige);
     padding: 4vh 2vw;
     font-size: 1rem;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--brown);
 }
