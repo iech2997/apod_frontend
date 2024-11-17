@@ -5,71 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <title>APOD</title>
+    <title>Astronomy Picture Of The Day</title>
 </head>
 
 <body>
     <header>
-        <a id="header-home" href="index.html">Astronomy Picture Of The Day</a>
+        <p id="header-home">Astronomy Picture Of The Day</p>
     </header>
 
     <main>
-        <section class="major">
-            <div class="major-pic">
-                <img id="major-picture" src="">
-                <iframe id="major-video" src=""></iframe>
-            </div>
-
-            <div class="major-info">
-                <p id="major-date"></p>
-                <p id="major-title"></p>
-                <p id="major-copyright"></p>
-                <p id="major-explanation"></p>
-            </div>
-        </section>
-
-        <section class="minor">
-            <div class="minor-card">
-                <div class="minor-pic">
-                    <img class="minor-picture" id="minor1-picture" src="">
-                    <iframe class="minor-video" id="minor1-video" src=""></iframe>
-                </div>
-                <div class="minor-info">
-                    <p class="minor-date" id="minor1-date"></p>
-                    <p class="minor-title" id="minor1-title"></p>
-                </div>
-            </div>
-            <div class="minor-card">
-                <div class="minor-pic">
-                    <img class="minor-picture" id="minor2-picture" src="">
-                    <iframe class="minor-video" id="minor2-video" src=""></iframe>
-                </div>
-                <div class="minor-info">
-                    <p class="minor-date" id="minor2-date"></p>
-                    <p class="minor-title" id="minor2-title"></p>
-                </div>
-            </div>
-            <div class="minor-card">
-                <div class="minor-pic">
-                    <img class="minor-picture" id="minor3-picture" src="">
-                    <iframe class="minor-video" id="minor3-video" src=""></iframe>
-                </div>
-                <div class="minor-info">
-                    <p class="minor-date" id="minor3-date"></p>
-                    <p class="minor-title" id="minor3-title"></p>
-                </div>
-            </div>
-            <div class="minor-card">
-                <div class="minor-pic">
-                    <img class="minor-picture" id="minor4-picture" src="">
-                    <iframe class="minor-video" id="minor4-video" src=""></iframe>
-                </div>
-                <div class="minor-info">
-                    <p class="minor-date" id="minor4-date"></p>
-                    <p class="minor-title" id="minor4-title"></p>
-                </div>
-            </div>
-        </section>
+        <div id="apod-container"></div>
+        <button id="load-more-btn">Load more</button>
     </main>
 
     <footer>
