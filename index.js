@@ -32,6 +32,7 @@ async function GetApod(start, end) {
 
 function FetchMoreApod() {
     headerSearch.value = "";
+    Search();
     endDaysAgo += 7;
     startDaysAgo += 7;
     GetApod(startDaysAgo, endDaysAgo);
