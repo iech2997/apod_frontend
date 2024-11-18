@@ -2,6 +2,7 @@
     box-sizing: border-box;  /* makes sure that the padding and border are included in the total width and height of the elements. */
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
 }
 
 /* global scope */
@@ -19,14 +20,44 @@ body {
 }
 
 header {
+    position: sticky;
+    top: 0;
+}
+
+#header-home {
     background-color: var(--darkBrown);
     color: var(--beige);
     padding: 4vh 2vw;
     letter-spacing: 1vw;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 2rem;
     text-transform: uppercase;
     text-align: center;
+}
+
+#top-nav {
+    background-color: var(--brown);
+    color: var(--darkBrown);
+    text-align: right;
+}
+
+#top-nav a {
+    text-decoration: none;
+    color: var(--darkBrown);
+}
+
+#top-nav a:hover {
+    color: var(--beige)
+}
+
+#header-search {
+    margin: 2vh 2vw;
+    padding: 1vh 1vw;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: var(--darkBrown);
+    background-color: var(--beige);
 }
 
 main {

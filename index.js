@@ -1,10 +1,18 @@
 const apodContainer = document.getElementById("apod-container");
 const loadMoreBtn = document.getElementById("load-more-btn");
+const headerSearch = document.querySelector("#header-search");
 let endDaysAgo = 0;
 let startDaysAgo = 6;
 let currentIndex = 0;
 let apodDataArr = [];
 const apodBaseUrl = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
+
+
+loadMoreBtn.addEventListener("click", FetchMoreApod);
+headerSearch.addEventListener("keyup", Search);
+
+GetApod(startDaysAgo, endDaysAgo);
+
 
 async function GetApod(start, end) {
     // The fetch() method returns a Promise, which is a placeholder object that will either be "fulfilled" if your request is successful, 
@@ -23,9 +31,10 @@ async function GetApod(start, end) {
 }
 
 function FetchMoreApod() {
+    headerSearch.value = "";
     endDaysAgo += 7;
     startDaysAgo += 7;
-    GetApod(startDaysAgo, endDaysAgo)
+    GetApod(startDaysAgo, endDaysAgo);
 };
 
 function DisplayApod(apodCollection) {
@@ -65,6 +74,16 @@ function GetDateString(daysAgo) {
     return `${year}-${month}-${date}`;
 }
 
-loadMoreBtn.addEventListener("click", FetchMoreApod);
-
-GetApod(startDaysAgo, endDaysAgo);
+function Search() {
+    let allApodCard = document.querySelectorAll(".apod-card");
+    let filter = headerSearch.value.toLowerCase();
+    for (let i = 0; i < allApodCard.length; i++) {
+        let title = allApodCard[i].querySelector(".apod-title").innerText.toLowerCase();
+        if (title.indexOf(filter) === -1) {
+            allApodCard[i].style.display = "none";
+        }
+        else {
+            allApodCard[i].style.display = "";
+        }
+    }
+}
