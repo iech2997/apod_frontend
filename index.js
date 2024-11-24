@@ -8,25 +8,29 @@ const githubOwner = "iech2997";
 const githubRepo = "apod_frontend";
 
 
-const apodContainer = document.getElementById("apod-container");
+const apodHistoryContainer = document.getElementById("apod-history-container");
+const apodSelectedContainer = document.querySelector("#apod-selected-container");
 const loadMoreBtn = document.getElementById("load-more-btn");
 const headerSearch = document.querySelector("#header-search");
 const githubCommit = document.querySelector("#commit-btn");
 const githubCommitNumber = document.querySelector("#commit-number");
 let endDaysAgo = 0;
-let startDaysAgo = 8;
+let startDaysAgo = 7;
+const numberOfNewCards =  8;
 let currentIndex = 0;
 let apodDataArr = [];
-const apodBaseUrl = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
+//const apodBaseUrl = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
+const apodBaseUrl = "https://api.nasa.gov/planetary/apod?api_key=L2tecoNEQagoNEzVxASkC2tpVN8ZjgnxGeu0BWqB";
 
 
 loadMoreBtn.addEventListener("click", FetchMoreApod);
 headerSearch.addEventListener("keyup", Search);
 githubCommit.addEventListener("click", updateCommit);
 
-GetApod(startDaysAgo, endDaysAgo);
 
 updateCommit();
+await GetApod(startDaysAgo, endDaysAgo);
+selectApod(0);  // default select the first apod
 
 
 async function updateCommit() {
@@ -47,6 +51,18 @@ async function getGithubCommit() {
     return commitRes["data"].length;
 }
 
+function selectApod(i) {
+    apodSelectedContainer.innerHTML = "";
+
+    let node = document.querySelector(`#apod-card-${i}`);
+    let clone = node.cloneNode(true);
+    clone.setAttribute("id", "apod-selected-card");
+    clone.className = "";
+    clone.querySelector(".card-body .apod-explanation").classList.remove("text-truncate");
+    apodSelectedContainer.appendChild(clone);
+    window.scrollTo(0, 0);
+}
+
 async function GetApod(start, end) {
     // The fetch() method returns a Promise, which is a placeholder object that will either be "fulfilled" if your request is successful, 
     // or "rejected" if your request is unsuccessful.
@@ -61,22 +77,27 @@ async function GetApod(start, end) {
     apodDataArr = await apodRes.json();
     apodDataArr.reverse();
     DisplayApod(apodDataArr);
+    
+    for (let i = 0; i < currentIndex; i++) {
+        let newApodCard = document.querySelector(`#apod-card-${i}`);
+        newApodCard.addEventListener("click", () => { selectApod(i) });
+    }
 }
 
 function FetchMoreApod() {
     headerSearch.value = "";
     Search();
-    endDaysAgo += 9;
-    startDaysAgo += 9;
+    endDaysAgo += numberOfNewCards;
+    startDaysAgo += numberOfNewCards;
     GetApod(startDaysAgo, endDaysAgo);
 };
 
 function DisplayApod(apodCollection) {
     // Destructuring parameters is a convenient way to extract values from objects and arrays directly within function parameters
     apodCollection.forEach(({ copyright, date, explanation, title, url, media_type }) => {
-        apodContainer.innerHTML += `<div class="apod-col col"><article id="apod-card-${currentIndex}" class="apod-card card h-100 text-bg-info"></article></div>`;
+        apodHistoryContainer.innerHTML += `<div class="apod-col col"><article id="apod-card-${currentIndex}" class="apod-card card h-100"></article></div>`;
 
-        let apodCard = document.getElementById("apod-card-" + currentIndex);
+        let apodCard = document.querySelector(`#apod-card-${currentIndex}`);
 
         let mediaHtml = "";
         if (url) {
