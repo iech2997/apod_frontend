@@ -9,7 +9,7 @@ const githubRepo = "apod_frontend";
 
 
 const apodHistoryContainer = document.getElementById("apod-history-container");
-const apodSelectedContainer = document.querySelector("#apod-selected-container");
+const apodTodayContainer = document.querySelector("#apod-today-container");
 const loadMoreBtn = document.getElementById("load-more-btn");
 const headerSearch = document.querySelector("#header-search");
 const githubCommit = document.querySelector("#commit-btn");
@@ -30,7 +30,6 @@ githubCommit.addEventListener("click", updateCommit);
 
 updateCommit();
 await GetApod(startDaysAgo, endDaysAgo);
-selectApod(0);  // default select the first apod
 
 
 async function updateCommit() {
@@ -51,18 +50,6 @@ async function getGithubCommit() {
     return commitRes["data"].length;
 }
 
-function selectApod(i) {
-    apodSelectedContainer.innerHTML = "";
-
-    let node = document.querySelector(`#apod-card-${i}`);
-    let clone = node.cloneNode(true);
-    clone.setAttribute("id", "apod-selected-card");
-    clone.className = "";
-    clone.querySelector(".card-body .apod-explanation").classList.remove("text-truncate");
-    apodSelectedContainer.appendChild(clone);
-    window.scrollTo(0, 0);
-}
-
 async function GetApod(start, end) {
     // The fetch() method returns a Promise, which is a placeholder object that will either be "fulfilled" if your request is successful, 
     // or "rejected" if your request is unsuccessful.
@@ -77,11 +64,6 @@ async function GetApod(start, end) {
     apodDataArr = await apodRes.json();
     apodDataArr.reverse();
     DisplayApod(apodDataArr);
-    
-    for (let i = 0; i < currentIndex; i++) {
-        let newApodCard = document.querySelector(`#apod-card-${i}`);
-        newApodCard.addEventListener("click", () => { selectApod(i) });
-    }
 }
 
 function FetchMoreApod() {
@@ -120,6 +102,22 @@ function DisplayApod(apodCollection) {
 
         cardBody.innerHTML += titleHtml + copyrightHtml + dateHtml + explanationHtml;
         apodCard.appendChild(cardBody);
+
+        if (currentIndex === 0) {
+            apodTodayContainer.innerHTML = mediaHtml;
+            apodTodayContainer.querySelector(".apod-media").className = "apod-media col-md-6";
+
+            let apodTodayBody = document.createElement("div");
+            apodTodayBody.className = "apod-today-body col-md-6";
+
+            let copyrightHtml = copyright ? `<p class="apod-copyright">${copyright}</p>` : "";
+            let dateHtml = date ? `<p class="apod-date">${date}</p>` : "";
+            let explanationHtml = explanation ? `<p class="apod-explanation">${explanation}</p>` : "";
+            let titleHtml = title ? `<h2 class="apod-title">${title}</h2>` : "";
+            
+            apodTodayBody.innerHTML = titleHtml + copyrightHtml + dateHtml + explanationHtml;
+            apodTodayContainer.appendChild(apodTodayBody);
+        }
 
         currentIndex++;
     });
