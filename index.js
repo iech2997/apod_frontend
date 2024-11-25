@@ -77,7 +77,7 @@ function FetchMoreApod() {
 function DisplayApod(apodCollection) {
     // Destructuring parameters is a convenient way to extract values from objects and arrays directly within function parameters
     apodCollection.forEach(({ copyright, date, explanation, title, url, media_type }) => {
-        apodHistoryContainer.innerHTML += `<div class="apod-col col"><article id="apod-card-${currentIndex}" class="apod-card card h-100"></article></div>`;
+        apodHistoryContainer.innerHTML += `<div class="apod-col col"><article id="apod-card-${currentIndex}" class="apod-card card h-100 text-bg-dark"></article></div>`;
 
         let apodCard = document.querySelector(`#apod-card-${currentIndex}`);
 
